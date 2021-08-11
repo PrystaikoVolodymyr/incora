@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken');
-const { statusCodes } = require('../constants');
+const { constant, statusCodes } = require('../constants');
 const ErrorHandler = require('../error/errorHandler');
 const O_Auth = require('../dataBase/models/O_Auth');
 
 module.exports = {
     checkIsTokenValid: async (req, res, next) => {
         try {
-            const access_token = req.get('Authorization');
+            const access_token = req.get(constant.AUTHORIZATION);
             if (!access_token) {
                 throw new ErrorHandler(statusCodes.NOT_FOUND, 'Token is not found');
             }

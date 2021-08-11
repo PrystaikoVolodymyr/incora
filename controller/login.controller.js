@@ -5,7 +5,6 @@ const { passwordHasher, tokenizer } = require('../helpers');
 module.exports = {
     loginUser: async (req, res, next) => {
         try {
-            console.log('ccccc');
             const { email, password } = req.body;
 
             const user = await User.findOne({ email });
