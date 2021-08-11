@@ -37,7 +37,7 @@ module.exports = {
             await userService.updateUser(userId, userUpdates);
             const updatedUser = await userService.findById(userId);
 
-            await mailService.senderMail(updatedUser.email, emailActions.UPDATE, updatedUser.first_name);
+            await mailService.senderMail(updatedUser.email, emailActions.UPDATE, { userName: updatedUser.first_name });
             res.json(updatedUser);
         } catch (e) {
             next(e);
